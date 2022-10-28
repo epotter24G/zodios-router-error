@@ -1,6 +1,6 @@
 import { zodiosContext } from "@zodios/express";
 import { makeApi } from "@zodios/core";
-import z from "zod";
+import { z } from "zod";
 
 const user = z.object({
   user: z
@@ -20,6 +20,13 @@ const baseApi = makeApi([
     path: "/test",
     alias: "test",
     description: "test item",
+    parameters: [
+      {
+        type: "Query",
+        name: "testparam",
+        schema: z.number(),
+      },
+    ],
     response: z.object({
       id: z.string(),
       name: z.string().nullable(),
